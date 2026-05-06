@@ -1,23 +1,33 @@
-<div class="d-flex flex-column flex-shrink-0 p-3 bg-white border-end" style="width: 250px">
-  <aside class="d-flex flex-column p-3 border-end bg-white" style="width: 260px">
-    <div class="mb-4">
-      <h4 class="text-purple fw-bold">Bnan</h4>
-    </div>
+<aside class="d-flex flex-column flex-shrink-0 p-3 bg-white border-end shadow-sm flex-grow-1" style="width: 260px;">
+  <div class="mb-2 d-flex justify-content-center align-items-center">
 
-    <ul class="nav nav-pills flex-column gap-2">
-      <li class="nav-item">
-        <a class="nav-link d-flex align-items-center gap-2 text-dark">
-          <i class="bi bi-person"></i>
-          Perfil
-        </a>
-      </li>
+    <h3 class="text-purple fw-bold  d-flex align-items-center gap-2 mt-3">
+      <i class="bi bi-rocket-takeoff"></i> Bnan CRM
+    </h3>
+  </div>
+  <hr>
+  <ul class="nav nav-pills flex-column gap-2 mb-auto mt-2">
+    <li class="nav-item">
+      <a routerLink="clientes" routerLinkActive="active" class="nav-link d-flex align-items-center gap-2 text-dark">
+        <i class="bi bi-people"></i> Clientes
+      </a>
+    </li>
 
-      <li class="nav-item">
-        <a class="nav-link active d-flex align-items-center gap-2 btn-purple text-white">
-          <i class="bi bi-people"></i>
-          Clientes
-        </a>
-      </li>
-    </ul>
-  </aside>
-</div>
+    @if (auth.isAdmin) {
+    <li class="nav-item">
+      <a routerLink="usuarios" routerLinkActive="active" class="nav-link d-flex align-items-center gap-2 text-dark">
+        <i class="bi bi-person-badge"></i> Panel Usuarios
+      </a>
+    </li>
+    }
+  </ul>
+
+  <hr>
+
+  <div class="text-center pb-2">
+    <span class="badge" [class.text-bg-danger]="auth.isAdmin" [class.text-bg-secondary]="!auth.isAdmin">
+      Rol actual: {{ auth.isAdmin ? 'ADMINISTRADOR' : 'USUARIO' }}
+    </span>
+    <p class="mt-2" style="font-size: 10px;">Para probar user normal poner false en el auth.service.ts</p>
+  </div>
+</aside>

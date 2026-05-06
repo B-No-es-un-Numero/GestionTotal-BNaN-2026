@@ -1,7 +1,15 @@
-<app-user-navbar></app-user-navbar>
+<div class="d-flex vh-100 bg-light overflow-hidden">
 
-<main>
-  <router-outlet></router-outlet>
-</main>
+  <app-user-navbar class="d-flex h-100"></app-user-navbar>
 
-<app-footer></app-footer>
+  <div class="d-flex flex-column flex-grow-1 overflow-auto">
+
+    <main class="flex-grow-1 p-4 p-md-5">
+      <div class="container-fluid">
+
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+
+  </div>
+</div>
