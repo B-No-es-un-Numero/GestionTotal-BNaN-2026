@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --purple-main: #9333ea;
+    --purple-hover: #7e22ce;
+    --purple-light: #f3e8ff;
+}
+
+/* Colores de texto y botones idénticos a la landing */
+.text-purple {
+    color: var(--purple-main) !important;
+}
+
+.btn-purple {
+    background-color: var(--purple-main);
+    color: white;
+    border: none;
+}
+
+.btn-purple:hover {
+    background-color: var(--purple-hover);
+    color: white;
+}
+
+.btn-outline-purple {
+    border: 1px solid var(--purple-main);
+    color: var(--purple-main);
+    background-color: transparent;
+}
+
+.btn-outline-purple:hover {
+    background-color: var(--purple-light);
+    color: var(--purple-main);
+}
+
+/* Para el menú lateral activo */
+.nav-pills .nav-link.active {
+    background-color: var(--purple-main) !important;
+    color: white !important;
+}
+
+/* Para los badges (Admin/User) */
+.bg-purple-subtle {
+    background-color: var(--purple-light) !important;
+    color: var(--purple-main) !important;
+}
