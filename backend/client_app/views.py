@@ -31,7 +31,7 @@ class ClientView(ApiView):
             return Response(serializer.data);
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST);
 
-def delete(self, request, pk=None,):
+    def delete(self, request, pk=None,):
         client = get_object_or_404(Client, id=pk);
         hard = request.query_params.get("hard", "false").lower() in ["true"]
         if hard:
