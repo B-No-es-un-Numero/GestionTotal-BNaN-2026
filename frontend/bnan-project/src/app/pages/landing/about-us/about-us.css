@@ -12,6 +12,17 @@
   color: var(--purple-main) !important;
 }
 
+.custom-purple-btn {
+  background-color: #9333ea;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.custom-purple-btn:hover {
+  background-color: #5a32a3;
+  transform: translateY(-1px);
+}
+
 .about-card {
   aspect-ratio: 1 / 1;
   background: linear-gradient(135deg, #a855f7 0%, var(--purple-main) 100%);
@@ -39,6 +50,17 @@
   height: 100px;
   background-color: #f472b6;
   opacity: 0.2;
+}
+
+.dashboard-preview {
+  max-width: 100%;
+  border-radius: 20px;
+  opacity: 0.92;
+  transition: transform 0.3s ease;
+}
+
+.dashboard-preview:hover {
+  transform: scale(1.02);
 }
 
 h5 {
