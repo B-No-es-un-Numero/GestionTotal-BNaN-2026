@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView as ApiView
 from rest_framework import status
 from user_app.models import User
-from user_app.serializars import UserSerializer
+from user_app.serializers import UserSerializer
 from django.shortcuts import get_object_or_404
 
 
@@ -12,7 +12,7 @@ class UserView(ApiView):
             user = get_object_or_404(User, id=pk);
             serializer = UserSerializer(user);
         else:
-            users = User.objects.all();
+            users = User.objects.filter(enabled=True);
             serializer = UserSerializer(users, many=True);
         return Response(serializer.data, status=status.HTTP_200_OK);
 

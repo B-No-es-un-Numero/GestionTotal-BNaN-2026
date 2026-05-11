@@ -1,4 +1,3 @@
-import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -9,11 +8,7 @@ class User(AbstractUser):
         ('user', 'Usuario estandar'),
     ]
 
-    id = models.UUIDField(
-        primary_key=True, 
-        default=uuid.uuid4, 
-        editable=False
-    )
+    id = models.BigAutoField(primary_key=True, editable=False)
 
     email = models.EmailField(
         max_length=150, 
