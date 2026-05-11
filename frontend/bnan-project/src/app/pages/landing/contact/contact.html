@@ -9,7 +9,7 @@
 
     <div class="row g-5">
       <div class="col-lg-7">
-        <form (ngSubmit)="handleSubmit()" #contactForm="ngForm" class="row g-4">
+        <form (ngSubmit)="handleSubmit(contactForm)" #contactForm="ngForm" class="row g-4">
           <div class="col-12">
             <label for="name" class="form-label fw-semibold text-secondary">Nombre completo</label>
             <input 
@@ -18,7 +18,10 @@
               name="name" 
               [(ngModel)]="formData.name" 
               required 
+              minlength="3"
+              #nameModel="ngModel"
               class="form-control form-control-lg border-2 shadow-none" 
+              [class.is-invalid]="nameModel.invalid && nameModel.touched"
               placeholder="Tu nombre">
           </div>
 
@@ -30,8 +33,20 @@
               name="email" 
               [(ngModel)]="formData.email" 
               required 
+              email
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              #emailModel="ngModel"
               class="form-control form-control-lg border-2 shadow-none" 
+              [class.is-invalid]="emailModel.invalid && emailModel.touched"
+              [class.is-valid]="emailModel.valid && emailModel.touched"
               placeholder="tu@email.com">
+
+              <div class="invalid-feedback" *ngIf="emailModel.errors?.['required']">
+                El correo es obligatorio.
+              </div>
+              <div class="invalid-feedback" *ngIf="emailModel.errors?.['pattern']">
+                Por favor, introduce un formato de email válido.
+              </div>
           </div>
 
           <div class="col-md-6">
