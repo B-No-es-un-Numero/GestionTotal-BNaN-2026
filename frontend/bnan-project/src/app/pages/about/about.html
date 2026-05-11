@@ -4,7 +4,7 @@
   <div class="container">
 
     <!-- Header -->
-    <div class="text-center mb-5">
+    <div class="text-center mb-5 mt-5">
       <h1 class="display-4 fw-bold">Nuestro Equipo</h1>
 
       <p class="lead text-secondary mx-auto" style="max-width: 700px;">
@@ -14,119 +14,56 @@
     </div>
 
     <!-- Cards -->
+    <div class="row g-4 justify-content-center mb-5">
+
+        @for (persona of equipo; track persona.id) {
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm h-100 rounded-4 p-4 text-center">
+
+            <div class="fs-1 mb-3">{{ persona.emoji }}</div>
+
+            <h4 class="fw-bold">{{ persona.nombre }}</h4>
+
+            <p class="text-purple fw-semibold">
+              {{ persona.puesto }}
+            </p>
+
+            <p class="text-secondary">
+              {{ persona.bio }}
+            </p>
+
+            <button class="btn btn-purple mt-auto" [routerLink]="['/about', persona.id]">
+              Ver más
+              <i class="bi bi-arrow-right ms-2"></i>
+            </button>
+
+          </div>
+        </div>
+      } @empty {
+        <p class="text-center">No hay miembros en el equipo para mostrar.</p>
+      }
+    </div>
+
+    <hr class="section-divider my-5">
+
     <div class="row g-4 justify-content-center">
-
-      <!-- CARD -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card border-0 shadow-sm h-100 rounded-4 p-4 text-center">
-
-          <div class="fs-1 mb-3">👩‍💼</div>
-
-          <h4 class="fw-bold">Melina Bruvera</h4>
-
-          <p class="text-purple fw-semibold">
-            CEO & Fundadora
-          </p>
-
-          <p class="text-secondary">
-            Experta en marketing de negocios con mas de 15 años de experiencia en marketing digital.
-          </p>
-
-          <button class="btn btn-purple mt-auto" [routerLink]="['/about', 1]">
-            Ver más
-            <i class="bi bi-arrow-right ms-2"></i>
-          </button>
-
+      
+      @for (item of valores; track item.titulo) {
+        <div class="col-md-6">
+          <div class="card border-0 shadow-sm h-100 rounded-4 p-5 value-card">
+            <div class="d-flex align-items-center mb-3">
+              <div class="bg-purple-light p-3 rounded-circle me-3">
+                <i class="bi {{ item.icon }} fs-2 text-purple"></i>
+              </div>
+              <h2 class="fw-bold m-0">{{ item.titulo }}</h2>
+            </div>
+            
+            <p class="text-secondary fs-5 lh-base">
+              {{ item.descripcion }}
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card border-0 shadow-sm h-100 rounded-4 p-4 text-center">
-          
-          <div class="fs-1 mb-3">👨‍💻</div>
-          
-          <h4 class="fw-bold">Guillermo Divan</h4>
-          
-          <p class="text-purple fw-semibold">
-            Director de Marketing
-          </p>
-          
-          <p class="text-secondary">
-            Especialista en marketing digital y growth hacking con resultados comprobados.
-          </p>
-          
-          <button class="btn btn-purple mt-auto" [routerLink]="['/about', 2]">
-            Ver más
-            <i class="bi bi-arrow-right ms-2"></i>
-          </button>
-          
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card border-0 shadow-sm h-100 rounded-4 p-4 text-center">
-
-          <div class="fs-1 mb-3">👨‍💻</div>
-
-          <h4 class="fw-bold">Gabriel Natale</h4>
-
-          <p class="text-purple fw-semibold">
-            Frontend Developer
-          </p>
-
-          <p class="text-secondary">
-            Especialista en interfaces modernas y experiencia de usuario.
-          </p>
-
-          <button class="btn btn-purple mt-auto" [routerLink]="['/about', 3]">
-            Ver más
-            <i class="bi bi-arrow-right ms-2"></i>
-          </button>
-
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card border-0 shadow-sm h-100 rounded-4 p-4 text-center">
-
-          <div class="fs-1 mb-3">👨‍🎨</div>
-
-          <h4 class="fw-bold">David Pardo</h4>
-
-          <p class="text-purple fw-semibold">
-            Director Creativo
-          </p>
-
-          <p class="text-secondary">
-            Diseñador gráfico y estratega de marca con pasión por la creatividad innovadora.
-          </p>
-
-          <button class="btn btn-purple mt-auto" [routerLink]="['/about', 4]">
-            Ver más
-            <i class="bi bi-arrow-right ms-2"></i>
-          </button>
-
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card border-0 shadow-sm h-100 rounded-4 p-4 text-center">
-
-          <div class="fs-1 mb-3">🧑‍🚀</div>
-
-          <h4 class="fw-bold">Joaquin Romero</h4>
-
-          <p class="text-purple fw-semibold">
-            Innovación Tech
-          </p>
-
-          <p class="text-secondary">
-            Especialista en buscar y aplicar tecnologías modernas para resolver problemas reales.
-          </p>
-
-          <button class="btn btn-purple mt-auto" [routerLink]="['/about', 5]">
-            Ver más
-            <i class="bi bi-arrow-right ms-2"></i>
-          </button>
-
-        </div>
-      </div>
+      }
 
     </div>
 
@@ -134,6 +71,7 @@
 </section>
 
 <app-footer></app-footer>
+
 
 
 

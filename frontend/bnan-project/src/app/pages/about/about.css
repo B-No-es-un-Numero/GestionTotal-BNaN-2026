@@ -1,0 +1,36 @@
+.section-divider {
+  width: 100px;
+
+  height: 4px;
+
+  margin-inline: auto;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    #6f42c1,
+    #8b5cf6
+  );
+
+  opacity: 0.7;
+}
+
+.value-card {
+  background: linear-gradient(
+    135deg,
+    rgba(111, 66, 193, 0.06),
+    rgba(139, 92, 246, 0.03)
+  );
+
+  border: 1px solid rgba(111, 66, 193, 0.08);
+
+  transition: 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 24px rgba(111, 66, 193, 0.08);
+}
