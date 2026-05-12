@@ -1,0 +1,45 @@
+<div class="login-container d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="card border-0 shadow-sm p-4 p-md-5 login-card rounded-4">
+    <div class="text-center mb-4">
+      <div class="icon-circle mx-auto mb-3">
+        <i class="bi bi-box-arrow-in-right text-purple fs-4"></i>
+      </div>
+      <h4 class="fw-bold text-dark mb-2">Bnan</h4>
+      <p class="text-secondary small">Inicia sesión en tu cuenta</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="username" class="form-label fw-semibold small text-dark mb-1">Usuario</label>
+        <input 
+          type="text" 
+          id="username" 
+          formControlName="username" 
+          class="form-control text-secondary" 
+          placeholder="Ingresa tu usuario"
+        >
+        @if (loginForm.controls.username.touched && loginForm.controls.username.invalid) {
+          <small class="text-danger mt-1 d-block">El usuario es requerido.</small>
+        }
+      </div>
+
+      <div class="mb-4">
+        <label for="password" class="form-label fw-semibold small text-dark mb-1">Contraseña</label>
+        <input 
+          type="password" 
+          id="password" 
+          formControlName="password" 
+          class="form-control text-secondary" 
+          placeholder="Ingresa tu contraseña"
+        >
+        @if (loginForm.controls.password.touched && loginForm.controls.password.invalid) {
+          <small class="text-danger mt-1 d-block">La contraseña es requerida.</small>
+        }
+      </div>
+
+      <button type="submit" class="btn btn-purple w-100 py-2 d-flex justify-content-center align-items-center gap-2">
+        <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+      </button>
+    </form>
+  </div>
+</div>

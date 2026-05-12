@@ -5,10 +5,11 @@ import { ClientListView } from './pages/user-dashboard/client-list-view/client-l
 import { ClientDetailView } from './pages/user-dashboard/client-detail-view/client-detail-view';
 import { ClientForm } from './pages/user-dashboard/client-form/client-form';
 import { AdminUsersView } from './pages/user-dashboard/admin-users-view/admin-users-view';
+import { Login } from './pages/auth/login/login';
 
 export const routes: Routes = [
   // { path: "registro", component: Register },
-  // { path: "iniciar-sesion", component: Login },
+  { path: "iniciar-sesion", component: Login },
   //{ path: "dashboard", component: DashboardLayout,
   //children: [
   //{ path: 'clients', component: Clients },
