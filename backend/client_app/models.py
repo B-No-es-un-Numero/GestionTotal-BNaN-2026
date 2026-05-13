@@ -1,6 +1,8 @@
-import uuid
 from django.db import models
 from django.core.validators import RegexValidator
+
+from company_app.models import Company
+from user_app.models import User
 
 class Client(models.Model):
     STATUS_CHOICES = [
@@ -9,7 +11,7 @@ class Client(models.Model):
         ('closed', 'Cerrado'),
     ]
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.BigAutoField(primary_key=True, editable=False)
 
     name = models.CharField(
         max_length=100,
@@ -46,16 +48,20 @@ class Client(models.Model):
         help_text="Estado del cliente."
     )
 
-    company_id = models.UUIDField(
+    company = models.ForeignKey(
+        Company,
+        on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        help_text="ID de la empresa asociada (placeholder)."
+        related_name='clients'
     )
-
-    responsible_user_id = models.UUIDField(
+    
+    responsible_user = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        help_text="ID del usuario responsable (placeholder)."
+        related_name='responsible_clients'
     )
 
     enabled = models.BooleanField(

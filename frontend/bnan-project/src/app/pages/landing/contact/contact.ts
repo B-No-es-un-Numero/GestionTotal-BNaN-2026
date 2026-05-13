@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -17,14 +17,14 @@ export class Contact {
     message: ''
   };
 
-  handleSubmit() {
-    alert('¡Gracias por contactarnos! Nos pondremos en contacto contigo pronto.');
+  handleSubmit(f: NgForm) {
+
     
-    this.formData = {
-      name: '',
-      email: '',
-      company: '',
-      message: ''
-    };
+    if (f.valid) {
+      console.log('Datos del formulario:', this.formData);
+          alert('¡Gracias por contactarnos! Nos pondremos en contacto contigo pronto.');
+
+          f.resetForm();
+    }
   }
 }
