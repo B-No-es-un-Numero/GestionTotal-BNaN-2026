@@ -11,12 +11,12 @@ interface UserProps {
 }
 
 @Component({
-  selector: 'app-admin-users-view',
+  selector: 'app-users-view',
   standalone: true,
   imports: [CommonModule, Modal, FormsModule, ReactiveFormsModule],
-  templateUrl: './admin-users-view.html'
+  templateUrl: './users-view.html'
 })
-export class AdminUsersView {
+export class UsersView {
   users: UserProps[] = [
     { id: 1, name: 'Joaquín García', email: 'joaquin@bnan.com', role: 'Admin' },
     { id: 2, name: 'Lucas Martínez', email: 'lucas@bnan.com', role: 'User' },
