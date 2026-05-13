@@ -1,0 +1,34 @@
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+
+@Component({
+  selector: 'app-login',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './login.html',
+  styleUrl: './login.css'
+})
+export class Login {
+  private fb = inject(FormBuilder);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
+  loginForm = this.fb.nonNullable.group({
+    username: ['', [Validators.required]],
+    password: ['', [Validators.required]]
+  });
+
+  onSubmit() {
+    if (this.loginForm.valid) {
+      // Mocked login logic
+      const mockToken = 'mock-jwt-token-for-frontend-only';
+      this.authService.login(mockToken);
+      this.router.navigate(['/dashboard']);
+    } else {
+      this.loginForm.markAllAsTouched();
+    }
+  }
+}
