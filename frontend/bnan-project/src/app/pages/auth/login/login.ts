@@ -23,9 +23,8 @@ export class Login {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      // Mocked login logic
-      const mockToken = 'mock-jwt-token-for-frontend-only';
-      this.authService.login(mockToken);
+      const { username } = this.loginForm.getRawValue();
+      this.authService.login(username);
       this.router.navigate(['/dashboard']);
     } else {
       this.loginForm.markAllAsTouched();
