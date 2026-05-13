@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, signal } from '@angular/core';
+import { Modal } from '../../../shared/modal/modal';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 interface UserProps {
   id: number;
@@ -10,6 +13,7 @@ interface UserProps {
 @Component({
   selector: 'app-admin-users-view',
   standalone: true,
+  imports: [CommonModule, Modal, FormsModule, ReactiveFormsModule],
   templateUrl: './admin-users-view.html'
 })
 export class AdminUsersView {
@@ -18,22 +22,54 @@ export class AdminUsersView {
     { id: 2, name: 'Lucas Martínez', email: 'lucas@bnan.com', role: 'User' },
     { id: 3, name: 'Sofía López', email: 'sofia@bnan.com', role: 'User' }
   ];
+  
+  userForm: FormGroup;
 
-  newUser() {
-    alert('Función para crear nuevo usuario');
+  isEditModalOpen = signal(false);
+  isDeleteModalOpen = signal(false);
+  isViewModalOpen = signal(false);isAddModalOpen = signal(false);
+  selectedUser = signal<UserProps | null>(null);
+
+  constructor(private fb: FormBuilder) {
+    this.userForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      role: ['User', Validators.required]
+    });
   }
 
-  viewUser(user: UserProps) {
-    alert(`Viendo detalles de: ${user.name}`);
+  newUser() {
+    this.userForm.reset({ role: 'User' });
+    this.isAddModalOpen.set(true);
+  }
+
+  saveNewUser() {
+    if (this.userForm.valid) {
+      console.log('Simulando creación de:', this.userForm.value);
+      this.closeModals();
+    } else {
+      this.userForm.markAllAsTouched();
+    }
   }
 
   editUser(user: UserProps) {
-    alert(`Editando a: ${user.name}`);
+    this.selectedUser.set(user);
+    this.isEditModalOpen.set(true);
   }
 
   deleteUser(id: number) {
-    if (confirm('¿Seguro que querés eliminar este usuario?')) {
-      this.users = this.users.filter(u => u.id !== id);
-    }
+    this.isDeleteModalOpen.set(true);
+  }
+
+  viewUser(user: UserProps) {
+    this.selectedUser.set(user);
+    this.isViewModalOpen.set(true);
+  }
+
+  closeModals() {
+    this.isAddModalOpen.set(false);
+    this.isEditModalOpen.set(false);
+    this.isViewModalOpen.set(false);
+    this.isDeleteModalOpen.set(false);
   }
 }
