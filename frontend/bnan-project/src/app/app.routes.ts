@@ -12,17 +12,6 @@ import { TeamMemberDetail } from './pages/team-member-detail/team-member-detail'
 export const routes: Routes = [
   // { path: "registro", component: Register },
   { path: "iniciar-sesion", component: Login },
-  //{ path: "dashboard", component: DashboardLayout,
-  //children: [
-  //{ path: 'clients', component: Clients },
-  //{ path: "clients/:id", component: ClientDetail },
-
-  // Cuando este funcional, agregar un [AdminGuard]
-  //{ path: "users", component: Users},
-  //{ path: "users/:id", component: UserDetail },
-  //{ path: "", redirectTo: "clients", pathMatch: "full" }
-  //]
-  //},
   {
     path: 'dashboard',
     component: UserDashboard,

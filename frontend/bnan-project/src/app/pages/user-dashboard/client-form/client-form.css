@@ -52,24 +52,6 @@ h3 {
   border-color: #ef4444;
 }
 
-.btn-purple {
-  background: linear-gradient(135deg, #a855f7 0%, var(--purple-main) 100%);
-  border: none;
-  border-radius: 0.75rem;
-  color: #fff;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.btn-purple:hover {
-  background: linear-gradient(135deg, var(--purple-main) 0%, var(--purple-dark) 100%);
-}
-
-.btn-purple:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
 .btn-outline-secondary {
   border-radius: 0.75rem;
 }
