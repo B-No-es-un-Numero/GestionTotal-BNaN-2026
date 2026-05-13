@@ -1,13 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    // Cambiar esto a 'false' para probar la vista de un usuario normal
-    isAdmin: boolean = true;
+    private _isAdmin = signal<boolean>(false);
+
+    isAdmin = this._isAdmin.asReadonly();
     private readonly TOKEN_KEY = 'bnan_token';
 
-    login(token: string): void {
-        localStorage.setItem(this.TOKEN_KEY, token);
+    login(username: string): void {
+        if (username === 'admin@test.com') {
+        this._isAdmin.set(true);
+        } else if(username === 'user@test.com') {
+        this._isAdmin.set(false);
+        }
     }
 
     logout(): void {
