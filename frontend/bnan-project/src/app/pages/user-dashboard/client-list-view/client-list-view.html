@@ -30,16 +30,16 @@
         </tr>
       </thead>
       <tbody>
-        @for (client of clients; track client.clientEmail) {
+        @for (client of clientList; track client.email) {
         <tr>
-          <td>{{ client.clientName }}</td>
-          <td>{{ client.clientEmail }}</td>
-          <td>{{ client.clientPhone }}</td>
-          <td>{{ client.clientCompany }}</td>
+          <td>{{ client.name }}</td>
+          <td>{{ client.email }}</td>
+          <td>{{ client.phone }}</td>
+          <td>{{ client.company }}</td>
           <td>
-            @if (client.clientState === 'active') {
+            @if (client.status === 'active') {
             <span class="badge bg-success-subtle text-success">Activo</span>
-            } @else if (client.clientState === 'lead') {
+            } @else if (client.status === 'lead') {
             <span class="badge bg-primary-subtle text-primary">Lead</span>
             } @else {
             <span class="badge bg-secondary-subtle text-secondary">Cerrado</span>
@@ -47,11 +47,11 @@
           </td>
           <td class="text-end">
             <a class="btn btn-sm btn-outline-primary me-2"
-              [routerLink]="['/dashboard/clientes-detalle', client.clientEmail]">
+              [routerLink]="['/dashboard/clientes-detalle', client.email]">
               <i class="bi bi-eye"></i>
             </a>
             <a class="btn btn-sm btn-outline-primary me-2"
-              [routerLink]="['/dashboard/clientes-form', client.clientEmail]">
+              [routerLink]="['/dashboard/clientes-form', client.email]">
               <i class="bi bi-pencil"></i>
             </a>
             <button class="btn btn-sm btn-outline-danger">
