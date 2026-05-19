@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
-    'users',
     'user_app',
     'task_app',
     'client_app',
@@ -120,7 +119,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # Configuración del modelo de usuario personalizado
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'user_app.User'
 
 # Configuración de Django REST Framework
 REST_FRAMEWORK = {

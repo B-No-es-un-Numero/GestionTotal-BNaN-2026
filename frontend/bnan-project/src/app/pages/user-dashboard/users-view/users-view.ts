@@ -12,7 +12,6 @@ interface UserProps {
 
 @Component({
   selector: 'app-users-view',
-  standalone: true,
   imports: [CommonModule, Modal, FormsModule, ReactiveFormsModule],
   templateUrl: './users-view.html'
 })
