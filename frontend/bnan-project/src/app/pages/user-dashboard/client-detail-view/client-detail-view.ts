@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ClientService } from '../../../services/client-service';
 
 interface ClientDetail {
-  clientName: string;
-  clientEmail: string;
-  clientDNI: string;
-  clientDateOfBirth: string;
-  clientPhone: string;
-  clientStatus: string;
-  clientCompany: string;
-  clientResponsible: string;
-  clientCreatedAt: string;
-  clientUpdatedAt: string;
+  id: number;
+  name: string;
+  email: string;
+  dni: string;
+  date_of_birth: string;
+  phone: string;
+  status: string;
+  enabled: boolean;
+  created_at: string;
+  updated_at: string;
+  company_name: string;
+  responsible_name: string;
 }
 
 @Component({
@@ -20,17 +23,43 @@ interface ClientDetail {
   templateUrl: './client-detail-view.html',
   styleUrl: './client-detail-view.css',
 })
-export class ClientDetailView {
-  client: ClientDetail = {
-    clientName: 'Juan Pérez',
-    clientEmail: 'juan1@gmail.com',
-    clientDNI: '30000001',
-    clientDateOfBirth: '1985-03-15',
-    clientPhone: '+5493511111111',
-    clientStatus: 'lead',
-    clientCompany: 'Mercado Libre',
-    clientResponsible: 'Luciano Herrera',
-    clientCreatedAt: '2026-04-28',
-    clientUpdatedAt: '2026-05-05',
-  };
+
+export class ClientDetailView implements OnInit {
+  private clientService = inject(ClientService);
+  private route = inject(ActivatedRoute);
+
+  client = signal<ClientDetail>({} as ClientDetail);
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const id = Number(params['id']);
+
+      this.clientService.getClientById(id)
+        .subscribe({
+          next: (response: any) => {
+            this.client?.set(response);
+
+          },
+          error: (error) => {
+            console.error(error);
+          }
+        });
+
+    });
+
+  }
 }
+  /*constructor() {
+
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.clientService.getClientById(id)
+      .subscribe({
+        next: (response: any) => {
+          this.client = response;
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
+  }
+}*/

@@ -30,12 +30,12 @@
         </tr>
       </thead>
       <tbody>
-        @for (client of clientList; track client.email) {
+        @for (client of clientList(); track client.email) {
         <tr>
           <td>{{ client.name }}</td>
           <td>{{ client.email }}</td>
           <td>{{ client.phone }}</td>
-          <td>{{ client.company }}</td>
+          <td>{{ client.company_name }}</td>
           <td>
             @if (client.status === 'active') {
             <span class="badge bg-success-subtle text-success">Activo</span>
@@ -47,11 +47,11 @@
           </td>
           <td class="text-end">
             <a class="btn btn-sm btn-outline-primary me-2"
-              [routerLink]="['/dashboard/clientes-detalle', client.email]">
+              [routerLink]="['/dashboard/clientes-detalle', client.id]">
               <i class="bi bi-eye"></i>
             </a>
             <a class="btn btn-sm btn-outline-primary me-2"
-              [routerLink]="['/dashboard/clientes-form', client.email]">
+              [routerLink]="['/dashboard/clientes-form', client.id]">
               <i class="bi bi-pencil"></i>
             </a>
             <button class="btn btn-sm btn-outline-danger">

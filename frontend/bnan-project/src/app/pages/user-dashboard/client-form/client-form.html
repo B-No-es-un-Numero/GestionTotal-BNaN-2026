@@ -7,19 +7,19 @@
         <label class="form-label fw-semibold text-secondary">Nombre y Apellido</label>
         <input
           type="text"
-          formControlName="nameSurname"
+          formControlName="name"
           placeholder="Juan García"
           class="form-control form-control-lg border-2"
         />
-        @if (form.controls.nameSurname.touched && form.controls.nameSurname.invalid) {
+        @if (form.controls.name.touched && form.controls.name.invalid) {
           <small class="text-danger d-block mt-1">
-            @if (form.controls.nameSurname.errors?.['required']) {
+            @if (form.controls.name.errors?.['required']) {
               Este campo es requerido.
             }
-            @if (form.controls.nameSurname.errors?.['maxlength']) {
+            @if (form.controls.name.errors?.['maxlength']) {
               Máximo 30 caracteres.
             }
-            @if (form.controls.nameSurname.errors?.['pattern']) {
+            @if (form.controls.name.errors?.['pattern']) {
               Caracter inválido. Ingrese solo letras.
             }
           </small>
@@ -70,17 +70,17 @@
         <label class="form-label fw-semibold text-secondary">Fecha de nacimiento</label>
         <input
           type="text"
-          formControlName="dateOfBirth"
-          placeholder="DD/MM/YYYY"
+          formControlName="date_of_birth"
+          placeholder="1990-12-31"
           class="form-control form-control-lg border-2"
         />
-        @if (form.controls.dateOfBirth.touched && form.controls.dateOfBirth.invalid) {
+        @if (form.controls.date_of_birth.touched && form.controls.date_of_birth.invalid) {
           <small class="text-danger d-block mt-1">
-            @if (form.controls.dateOfBirth.errors?.['required']) {
+            @if (form.controls.date_of_birth.errors?.['required']) {
               Este campo es requerido.
             }
-            @if (form.controls.dateOfBirth.errors?.['pattern']) {
-              Formato DD/MM/YYYY
+            @if (form.controls.date_of_birth.errors?.['pattern']) {
+              Formato YYYY-MM-DD
             }
           </small>
         }
@@ -90,16 +90,16 @@
         <label class="form-label fw-semibold text-secondary">Teléfono</label>
         <input
           type="text"
-          formControlName="phoneNumber"
+          formControlName="phone"
           placeholder="351351351"
           class="form-control form-control-lg border-2"
         />
-        @if (form.controls.phoneNumber.touched && form.controls.phoneNumber.invalid) {
+        @if (form.controls.phone.touched && form.controls.phone.invalid) {
           <small class="text-danger d-block mt-1">
-            @if (form.controls.phoneNumber.errors?.['required']) {
+            @if (form.controls.phone.errors?.['required']) {
               Este campo es requerido.
             }
-            @if (form.controls.phoneNumber.errors?.['pattern']) {
+            @if (form.controls.phone.errors?.['pattern']) {
               Caracter inválido. Ingrese solo números.
             }
           </small>
